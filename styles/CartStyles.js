@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const CartWrapper = styled.div`
+const { motion } = require("framer-motion");
+
+export const CartWrapper = styled(motion.div)`
   position: fixed;
   right: 0;
   top: 0;
@@ -12,15 +14,15 @@ export const CartWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export const CartStyle = styled.div`
-  width: 40%;
+export const CartStyle = styled(motion.div)`
+  width: 35%;
   background-color: #f1f1f1;
-  padding: 2rem 5rem;
+  padding: 2rem 4rem;
   overflow-y: scroll;
   position: relative;
 `;
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,18 +37,21 @@ export const Card = styled.div`
   }
 `;
 
-export const CardInfo = styled.div`
+export const CardInfo = styled(motion.div)`
   width: 50%;
+  h3 {
+    margin-bottom: 0.2rem;
+  }
   div {
     display: flex;
     flex-direction: space-between;
   }
 `;
 
-export const EmptyStyle = styled.div`
+export const EmptyStyle = styled(motion.div)`
   position: absolute;
   top: 1;
-  left: 50%;
+  left: 2%;
   transform: translate(-50%, 0%);
   display: flex;
   flex-direction: column;
@@ -54,6 +59,7 @@ export const EmptyStyle = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
+
   h1 {
     font-size: 2rem;
     padding: 2rem;
@@ -64,7 +70,7 @@ export const EmptyStyle = styled.div`
   }
 `;
 
-export const Quantity = styled.div`
+export const Quantity = styled(motion.div)`
   display: flex;
   align-items: center;
   margin: 1rem 0rem;
@@ -85,5 +91,17 @@ export const Quantity = styled.div`
   }
   svg {
     color: #494949;
+  }
+`;
+
+export const Checkout = styled(motion.div)`
+  button {
+    background-color: var(--primary);
+    padding: 1rem 2rem;
+    width: 100%;
+    color: white;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
   }
 `;
