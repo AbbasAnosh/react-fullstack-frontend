@@ -36,4 +36,20 @@ export const NavItems = styled.div`
     font-size: 1.5rem;
     color: #2c546d;
   }
+  span {
+    background-color: #ff2626;
+    color: white;
+    width: 1.3rem;
+    height: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    position: absolute;
+    right: -30%;
+    top: -50%;
+    font-weight: 500;
+    pointer-events: none;
+  }
 `;
