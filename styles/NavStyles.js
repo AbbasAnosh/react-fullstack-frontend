@@ -19,7 +19,7 @@ export const NavStyles = styled.div`
 export const NavItems = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   div {
     margin-left: 3rem;
     position: relative;
