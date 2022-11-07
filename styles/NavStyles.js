@@ -6,6 +6,7 @@ export const NavStyles = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
+  margin: 0 10%;
   h2 {
     cursor: pointer;
     color: #2c546d;
@@ -18,6 +19,7 @@ export const NavStyles = styled.div`
 
 export const NavItems = styled.div`
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: space-between;
   div {
