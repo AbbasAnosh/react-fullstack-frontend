@@ -9,6 +9,15 @@ export const DetailsStyle = styled.div`
   img {
     width: 40%;
   }
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
 `;
 
 export const ProductInfo = styled.div`
@@ -18,6 +27,9 @@ export const ProductInfo = styled.div`
     font-weight: medium;
     padding: 0.5rem 1rem;
     cursor: pointer;
+  }
+  @media (max-width: 700px) {
+    width: 100%;
   }
 `;
 

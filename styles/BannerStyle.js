@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const ImageCarousel = styled.div`
   position: relative;
-  image {
+  /* Image {
     max-width: 100%;
-  }
+    position: absolute;
+    max-height: 34px;
+  } */
 `;
 
 export const Content = styled.div`

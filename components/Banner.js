@@ -11,21 +11,28 @@ import { ImageCarousel, Content } from "../styles/BannerStyle";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { Navigation } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 
 const Banner = () => {
   return (
     <>
-      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+      <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        modules={[Pagination, Autoplay, Navigation]}
+        className="mySwiper"
+      >
         <SwiperSlide>
           <ImageCarousel>
-            <Image
-              src={imageCarousel1}
-              alt=""
-              // layout="fill"
-              // objectFit="cover"
-              // objectPosition="center"
-            />
+            {/* <Image src={imageCarousel1} alt="" /> */}
+            <Image src={imageCarousel1} alt="" />
             <Content>
               hello world, this content is the most extraordinary content on
               this photo which is glued for now.
