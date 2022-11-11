@@ -27,34 +27,124 @@ a {
   line-height: 150%;
 }
 
-.swiper {
-  width: 100%;
-  height: 550px;
-  margin-bottom: 3rem;
+.carouselbanner {
+  height: 75vh;
+  min-height: 400px;
 }
 
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+.slides {
+  height: 100%;
+}
 
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+.slides .slide {
+  width: 100%;
+  position: absolute;
+  height: 520px;
+  opacity: 0;
+  transition: all 0.3s;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
   align-items: center;
+  padding-left: 10%;
+}
+.slidetitles {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.swiper-slide img {
-  display: block;
+.slides .slide.active {
+  opacity: 1;
+}
+.slidecont {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 1;
+  transform: translateY(50px);
+  transition: all 0.7s;
+  opacity: 0;
+  transition-delay: 0.4s;
+}
+.first .slidecont {
+  color: #fdf1ec;
+}
+.first .slidecont a {
+  text-decoration: none;
+  color: var(--secondary);
+  background-color: var(--primary);
+  padding: 8px 15px;
+  justify-content: center;
+}
+.active .slidecont {
+  transform: initial;
+  opacity: 1;
+}
+.slidecont > * {
+  transition: all 0.3s;
+}
+.slide img {
   width: 100%;
-  height: 100px;
+  height: 100%;
+  position: absolute;
+  left: 0;
   object-fit: cover;
+  top: 0;
+}
+.second {
+  display: flex;
+  gap: 10px;
+}
+.second .slidecont .slidetitles {
+  flex-direction: column-reverse;
+}
+.second .slidecont {
+  color: var(--secondary);
+}
+.second .slidecont a {
+  text-decoration: none;
+  color: #fdf1ec;
+  background-color: var(--primary);
+  padding: 8px 15px;
+
+  justify-content: center;
+}
+.second .img2 {
+  width: 50%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  opacity: 0;
+  transition: all 1s;
+  transform: translateX(-80px);
+}
+.active .img2 {
+  left: 0;
+  opacity: 1;
+  transform: translateX(0);
+}
+.img2 img {
+  widows: 100%;
+  z-index: 1;
+  object-fit: contain;
+  max-height: 6;
+  max-height: 400px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.slides .third {
+  justify-content: flex-start;
+}
+.third .slidecont {
+  text-align: center;
+  color: var(--primary);
+}
+.third .slidecont a {
+  justify-content: center;
+  text-decoration: none;
+  color: #fdf1ec;
+  background-color: var(--primary);
+  padding: 8px 15px;
 }
