@@ -9,8 +9,10 @@ import { Buy } from "../../styles/ProductDetails";
 
 import { AiFillPlusCircle } from "react-icons/ai";
 import { AiFillMinusCircle } from "react-icons/ai";
+
 import { useStateContext } from "../../lib/context";
 import toast from "react-hot-toast";
+const { motion } = require("framer-motion");
 
 const ProductDetails = () => {
   useEffect(() => {
@@ -53,12 +55,14 @@ const ProductDetails = () => {
         <p>{description}</p>
         <Quantity>
           <span>Quantity</span>
-          <button onClick={increase}>
-            <AiFillPlusCircle />
-          </button>
-          <p>{quantity}</p>
           <button onClick={decrease}>
             <AiFillMinusCircle />
+          </button>
+          <motion.p animate={{ scale: 1 }} initial={{ scale: 0 }}>
+            {quantity}
+          </motion.p>
+          <button onClick={increase}>
+            <AiFillPlusCircle />
           </button>
         </Quantity>
         <Buy

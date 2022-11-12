@@ -6,6 +6,7 @@ export const DetailsStyle = styled.div`
   margin-top: 5rem;
   margin-left: 10%;
   margin-right: 10%;
+
   img {
     width: 40%;
   }
@@ -22,6 +23,9 @@ export const DetailsStyle = styled.div`
 
 export const ProductInfo = styled.div`
   width: 40%;
+  h3 {
+    margin-bottom: 1rem;
+  }
   button {
     font-size: 1rem;
     font-weight: medium;
@@ -52,7 +56,9 @@ export const Quantity = styled.div`
     color: var(--secondary);
   }
   svg {
-    color: #494949;
+    color: var(--primary);
+    width: 1.5rem;
+    height: auto;
   }
 `;
 
