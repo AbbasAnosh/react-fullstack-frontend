@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FooterSection = styled.div`
   margin-top: 70px;
   padding: 40px 0;
+  background-color: white;
 `;
 export const FooterSectionOne = styled.div`
   width: 80%;

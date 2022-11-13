@@ -37,6 +37,8 @@ export const NavItems = styled.div`
   svg {
     font-size: 1.5rem;
     color: #2c546d;
+    width: 1.5rem;
+    height: auto;
   }
   span {
     background-color: #ff2626;

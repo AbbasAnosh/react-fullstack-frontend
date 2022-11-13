@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useQuery } from "urql";
 import Carousel from "../components/Carousel/Carousel";
-import Footer from "../components/Footer";
 
 import Product from "../components/Product";
 import Subscribe from "../components/Subscribe";
@@ -30,7 +29,6 @@ export default function Home() {
           ))}
         </Gallery>
         <Subscribe />
-        <Footer />
       </main>
     </div>
   );
