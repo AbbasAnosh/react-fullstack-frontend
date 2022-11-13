@@ -1,5 +1,5 @@
 import React from "react";
-import { RiShoppingBag2Fill } from "react-icons/ri";
+import { RiShoppingCart2Fill } from "react-icons/ri";
 import Link from "next/link";
 import { NavStyles } from "../styles/NavStyles";
 import { NavItems } from "../styles/NavStyles";
@@ -26,7 +26,7 @@ const Nav = () => {
               {totalQuantities}
             </motion.span>
           )}
-          <RiShoppingBag2Fill />
+          <RiShoppingCart2Fill />
         </div>
       </NavItems>
       <AnimatePresence>{showCart && <Cart />}</AnimatePresence>

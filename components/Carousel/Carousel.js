@@ -3,7 +3,7 @@ import Slide from "./Slide";
 import { slides } from "../../pages/Constants";
 
 const Carousel = (props) => {
-  const [timeduration] = useState(6000);
+  const [timeduration] = useState(4000);
   const [play, setPlay] = useState(true);
   const [pos, setPos] = useState(0);
   const slidesrow = slides?.map((slide, i) => {

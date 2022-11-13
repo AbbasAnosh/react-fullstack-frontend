@@ -1,6 +1,13 @@
 import styled from "styled-components";
+const { motion } = require("framer-motion");
 
-export const DetailsStyle = styled.div`
+export const Section = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+`;
+
+export const DetailsStyle = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   margin-top: 5rem;
@@ -21,7 +28,7 @@ export const DetailsStyle = styled.div`
   }
 `;
 
-export const ProductInfo = styled.div`
+export const ProductInfo = styled(motion.div)`
   width: 40%;
   h3 {
     margin-bottom: 1rem;
@@ -37,7 +44,7 @@ export const ProductInfo = styled.div`
   }
 `;
 
-export const Quantity = styled.div`
+export const Quantity = styled(motion.div)`
   display: flex;
   align-items: center;
   margin: 1rem 0rem;
@@ -62,7 +69,7 @@ export const Quantity = styled.div`
   }
 `;
 
-export const Buy = styled.button`
+export const Buy = styled(motion.button)`
   width: 100%;
   background: var(--primary);
   color: white;

@@ -4,6 +4,10 @@ import Nav from "../components/Nav";
 import StateContext from "../lib/context";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import { Toaster } from "react-hot-toast";
+import Footer from "../components/Footer";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const client = createClient({ url: process.env.NEXT_PUBLIC_BACKEND_API });
 
@@ -14,8 +18,8 @@ function MyApp({ Component, pageProps }) {
         <Provider value={client}>
           <Toaster />
           <Nav />
-
           <Component {...pageProps} />
+          <Footer />
         </Provider>
       </StateContext>
     </UserProvider>

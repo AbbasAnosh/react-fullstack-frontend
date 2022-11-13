@@ -5,9 +5,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  // async redirects() {
-  //   return [{ sources: "/canceled", destination: "/", permanent: true }];
-  // },
+  images: {
+    domains: ["media2.giphy.com"],
+  },
 };
 
 module.exports = nextConfig;
