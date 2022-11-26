@@ -2,7 +2,7 @@ import React from "react";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import Link from "next/link";
 import { NavStyles } from "../styles/NavStyles";
-import { NavItems } from "../styles/NavStyles";
+import { NavItems, Category } from "../styles/NavStyles";
 import Cart from "./Cart";
 import { useStateContext } from "../lib/context";
 import User from "./User";
@@ -18,6 +18,17 @@ const Nav = () => {
       <Link href={"/"}>
         <h2>TARGET</h2>
       </Link>
+      <Category>
+        <Link href={"/"}>
+          <p>Men</p>
+        </Link>
+        <Link href={"/"}>
+          <p>Women</p>
+        </Link>
+        <Link href={"/"}>
+          <p>Children</p>
+        </Link>
+      </Category>
       <NavItems>
         <User />
         <div onClick={() => setShowCart(true)}>

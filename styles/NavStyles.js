@@ -17,6 +17,16 @@ export const NavStyles = styled.div`
   }
 `;
 
+export const Category = styled.div`
+  display: flex;
+  gap: 2em;
+  cursor: pointer;
+  p {
+    font-weight: 600;
+    color: teal;
+  }
+`;
+
 export const NavItems = styled.div`
   display: flex;
   cursor: pointer;
