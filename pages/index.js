@@ -1,6 +1,9 @@
 import Head from "next/head";
 import { useQuery } from "urql";
 import Carousel from "../components/Carousel/Carousel";
+import Category from "../components/Category";
+import CategoryFirst from "../components/CategoryFirst";
+import FeaturedProducts from "../components/FeaturedProducts";
 
 import Product from "../components/Product";
 import Subscribe from "../components/Subscribe";
@@ -23,11 +26,15 @@ export default function Home() {
       </Head>
       <main>
         <Carousel />
-        <Gallery>
+        <FeaturedProducts type="Trending" />
+        <CategoryFirst />
+
+        {/* <Category /> */}
+        {/* <Gallery>
           {products.map((product) => (
             <Product key={product.attributes.slug} product={product} />
           ))}
-        </Gallery>
+        </Gallery> */}
         <Subscribe />
       </main>
     </div>

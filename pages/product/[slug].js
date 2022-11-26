@@ -19,7 +19,6 @@ import { AiFillMinusCircle } from "react-icons/ai";
 import { useStateContext } from "../../lib/context";
 import toast from "react-hot-toast";
 import RecommendedSlider from "../../components/RecommendedSlider";
-const { motion } = require("framer-motion");
 
 const ProductDetails = () => {
   useEffect(() => {
