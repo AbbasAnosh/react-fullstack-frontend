@@ -1,14 +1,33 @@
 import React from "react";
 import {
   CategoryBody,
-  Image,
-  FirstImage,
-  SecondImage,
+  ImageComponent,
   CategoryImage,
   CategoryContent,
 } from "../styles/CategoryFirstStyle";
+import CategoryCardFirst from "../subComponents/CategoryCardFirst";
 
 const CategoryFirst = () => {
+  const data = [
+    {
+      id: 1,
+      img1: "https://images.unsplash.com/photo-1532572396497-1eafcca6066e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c3R5bGlzaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      img2: "https://images.unsplash.com/photo-1588117260148-b47818741c74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3R5bGlzaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Girls T-shirt",
+      isNew: true,
+      oldPrice: 19,
+      price: 12,
+    },
+    {
+      id: 2,
+      img1: "https://images.unsplash.com/photo-1549570652-97324981a6fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHN0eWxpc2h8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+      img2: "https://images.unsplash.com/photo-1548454782-15b189d129ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c3R5bGlzaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      title: "Men T-Shirt",
+      isNew: false,
+      oldPrice: 40,
+      price: 32,
+    },
+  ];
   return (
     <CategoryBody>
       <CategoryImage>
@@ -20,28 +39,11 @@ const CategoryFirst = () => {
       <CategoryContent>
         <h2>Give them our best.</h2>
         <p>FILL YOUR BAG WITH THESE FAN FAVORITES</p>
-        <Image>
-          <FirstImage>
-            <img
-              src="https://cdn.shopify.com/s/files/1/0127/2332/products/Swatch_ST3_c241cabe-3895-44d9-918e-db8429fa9a89.jpg?v=1649101793&width=320&format=webp"
-              alt=""
-            />
-            <img
-              src="https://cdn.shopify.com/s/files/1/0127/2332/products/wanderlust-swatch.jpg?v=1620777882&width=320&format=webp"
-              alt=""
-            />
-          </FirstImage>
-          <SecondImage>
-            <img
-              src="https://cdn.shopify.com/s/files/1/0127/2332/products/wanderlust-swatch.jpg?v=1620777882&width=320&format=webp"
-              alt=""
-            />
-            <img
-              src="https://cdn.shopify.com/s/files/1/0127/2332/products/LL_smear_nova_1000x_201536b6-ced1-4812-b591-f03e3c41dd04.jpg?v=1631835795&width=320&format=webp"
-              alt=""
-            />
-          </SecondImage>
-        </Image>
+        <ImageComponent>
+          {data.map((item) => (
+            <CategoryCardFirst item={item} />
+          ))}
+        </ImageComponent>
       </CategoryContent>
     </CategoryBody>
   );
