@@ -5,7 +5,7 @@ export const CardComponent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-
+  margin-bottom: 50px;
   h2 {
     font-size: 16px;
     font-weight: 500;

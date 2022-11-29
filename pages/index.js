@@ -8,16 +8,15 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import Product from "../components/Product";
 import Subscribe from "../components/Subscribe";
 import { PRODUCT_QUERY } from "../lib/query";
-import { Gallery } from "../styles/Gallery";
 
 export default function Home() {
-  const [results] = useQuery({ query: PRODUCT_QUERY });
-  const { data, fetching, error } = results;
+  // const [results] = useQuery({ query: PRODUCT_QUERY });
+  // const { data, fetching, error } = results;
 
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no...{error.message}</p>;
+  // if (fetching) return <p>Loading...</p>;
+  // if (error) return <p>Oh no...{error.message}</p>;
 
-  const products = data.products.data;
+  // const products = data.products.data;
   return (
     <div>
       <Head>
@@ -28,8 +27,6 @@ export default function Home() {
         <Carousel />
         <FeaturedProducts type="Trending" />
         <CategoryFirst />
-
-        {/* <Category /> */}
         {/* <Gallery>
           {products.map((product) => (
             <Product key={product.attributes.slug} product={product} />
