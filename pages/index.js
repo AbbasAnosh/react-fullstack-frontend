@@ -1,22 +1,23 @@
 import Head from "next/head";
 import { useQuery } from "urql";
 import Carousel from "../components/Carousel/Carousel";
-import Category from "../components/Category";
 import CategoryFirst from "../components/CategoryFirst";
 import FeaturedProducts from "../components/FeaturedProducts";
+import { Gallery } from "../styles/Gallery";
 
 import Product from "../components/Product";
 import Subscribe from "../components/Subscribe";
 import { PRODUCT_QUERY } from "../lib/query";
 
 export default function Home() {
-  // const [results] = useQuery({ query: PRODUCT_QUERY });
-  // const { data, fetching, error } = results;
+  const [results] = useQuery({ query: PRODUCT_QUERY });
+  const { data, fetching, error } = results;
 
-  // if (fetching) return <p>Loading...</p>;
-  // if (error) return <p>Oh no...{error.message}</p>;
+  if (fetching) return <p>Loading...</p>;
+  if (error) return <p>Oh no...{error.message}</p>;
 
-  // const products = data.products.data;
+  const products = data.products.data;
+  console.log(products);
   return (
     <div>
       <Head>
@@ -25,8 +26,9 @@ export default function Home() {
       </Head>
       <main>
         <Carousel />
-        <FeaturedProducts type="Trending" />
+        <FeaturedProducts type="featured" product={products} />
         <CategoryFirst />
+        <FeaturedProducts type="trending" product={products} />
         {/* <Gallery>
           {products.map((product) => (
             <Product key={product.attributes.slug} product={product} />
