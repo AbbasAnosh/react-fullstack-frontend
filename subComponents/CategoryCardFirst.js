@@ -11,7 +11,7 @@ import {
 
 const CategoryCardFirst = ({ item }) => {
   return (
-    <Link href={"#"}>
+    <Link href="/products/products">
       <CardComponent>
         <NewImage>
           {item.isNew && <span>New Product</span>}

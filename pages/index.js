@@ -3,9 +3,9 @@ import { useQuery } from "urql";
 import Carousel from "../components/Carousel/Carousel";
 import CategoryFirst from "../components/CategoryFirst";
 import FeaturedProducts from "../components/FeaturedProducts";
-import { Gallery } from "../styles/Gallery";
+// import { client, ssrCache } from "../lib/urqlClient";
 
-import Product from "../components/Product";
+// import Product from "../components/Product";
 import Subscribe from "../components/Subscribe";
 import { PRODUCT_QUERY } from "../lib/query";
 
@@ -29,13 +29,18 @@ export default function Home() {
         <FeaturedProducts type="featured" product={products} />
         <CategoryFirst />
         <FeaturedProducts type="trending" product={products} />
-        {/* <Gallery>
-          {products.map((product) => (
-            <Product key={product.attributes.slug} product={product} />
-          ))}
-        </Gallery> */}
         <Subscribe />
       </main>
     </div>
   );
 }
+
+// export async function getServerSideProps() {
+//   await client.query(PRODUCT_QUERY).toPromise();
+
+//   return {
+//     props: {
+//       urqlState: ssrCache.extractData(),
+//     },
+//   };
+// }
