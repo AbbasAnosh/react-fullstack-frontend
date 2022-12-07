@@ -1,41 +1,58 @@
 import React, { useState } from "react";
+import { useQuery } from "urql";
+import { client, ssrCache } from "../lib/urqlClient";
+import { PRODUCT_QUERY } from "../lib/query";
 import {
   Products,
   LeftPart,
   RightPart,
   FilterItem,
   InputItem,
-} from "../../styles/ProductsStyle";
-import List from "../../subComponents/List";
-import { useRouter } from "next/router";
+} from "../styles/ProductsStyle";
+import List from "../subComponents/ListProducts";
 
-const ProductsDetials = () => {
+const products = () => {
   const [maxprice, setMaxprice] = useState(1000);
   const [sort, setSort] = useState(null);
-  const router = useRouter();
-  const { id } = parseInt(router.query.id);
+
+  const [selectedSubCats, setSelectedSubCats] = useState([]);
+
+  const [results] = useQuery({ query: PRODUCT_QUERY });
+  const { data, fetching, error } = results;
+
+  if (fetching) return <p>Loading...</p>;
+  if (error) return <p>Oh no...{error.message}</p>;
+
+  const products = data.products.data;
+  const subcategory = data?.subCategories?.data;
+
+  const onhandlechange = (e) => {
+    const value = e.target.value;
+    const ischecked = e.target.checked;
+
+    setSelectedSubCats(
+      ischecked
+        ? [...selectedSubCats, value]
+        : selectedSubCats.filter((item) => item !== value)
+    );
+  };
 
   return (
     <Products>
       <LeftPart>
         <FilterItem>
           <h2>Product Categories</h2>
-          <InputItem>
-            <input type="checkbox" id="1" value={1} />
-            <lable htmlFor="1">shoes</lable>
-          </InputItem>
-          <InputItem>
-            <input type="checkbox" id="2" value={2} />
-            <lable htmlFor="2">T-Shirts</lable>
-          </InputItem>
-          <InputItem>
-            <input type="checkbox" id="3" value={3} />
-            <lable htmlFor="3">Hats</lable>
-          </InputItem>
-          <InputItem>
-            <input type="checkbox" id="4" value={4} />
-            <lable htmlFor="4">Bags</lable>
-          </InputItem>
+          {subcategory.map((item) => (
+            <InputItem key={item.id}>
+              <input
+                type="checkbox"
+                id={item.id}
+                value={item.id}
+                onChange={onhandlechange}
+              />
+              <lable htmlFor={item.id}>{item.attributes.title}</lable>
+            </InputItem>
+          ))}
         </FilterItem>
         <FilterItem>
           <h2>Filter by Price</h2>
@@ -82,10 +99,25 @@ const ProductsDetials = () => {
           className="newImage"
         />
 
-        <List id={id} maxprice={maxprice} sort={sort} />
+        <List
+          maxprice={maxprice}
+          sort={sort}
+          products={products}
+          subCate={selectedSubCats}
+        />
       </RightPart>
     </Products>
   );
 };
 
-export default ProductsDetials;
+export default products;
+
+export async function getServerSideProps() {
+  await client.query(PRODUCT_QUERY).toPromise();
+
+  return {
+    props: {
+      urqlState: ssrCache.extractData(),
+    },
+  };
+}

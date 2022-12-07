@@ -10,11 +10,9 @@ import {
 } from "../styles/CardProductStyle";
 
 const Card = ({ item }) => {
-  console.log(item);
-  const { title, price, image, image2, slug } = item.attributes;
-
+  const { title, price, image, image2 } = item.attributes;
   return (
-    <Link href={`/product/${slug}}`}>
+    <Link href="/products">
       <CardComponent>
         <Image>
           {item.isNew && <span>New Product</span>}
