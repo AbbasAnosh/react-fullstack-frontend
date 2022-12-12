@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "urql";
 import { client, ssrCache } from "../lib/urqlClient";
 import { PRODUCT_QUERY } from "../lib/query";
@@ -19,23 +19,38 @@ const products = () => {
 
   const [results] = useQuery({ query: PRODUCT_QUERY });
   const { data, fetching, error } = results;
+  const products = data.products.data;
 
+  const [newData, setNewData] = useState([]);
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh no...{error.message}</p>;
 
-  const products = data.products.data;
   const subcategory = data?.subCategories?.data;
 
   const onhandlechange = (e) => {
     const value = e.target.value;
     const ischecked = e.target.checked;
-
     setSelectedSubCats(
       ischecked
         ? [...selectedSubCats, value]
         : selectedSubCats.filter((item) => item !== value)
     );
   };
+
+  useEffect(() => {
+    const filteredData = [];
+    products.map((product) => {
+      selectedSubCats.map((id) => {
+        if (
+          product.attributes.sub_categories.data.length > 0 &&
+          product.attributes.sub_categories.data[0].id === id
+        ) {
+          filteredData.push(product);
+        }
+      });
+    });
+    filteredData.length > 0 ? setNewData(filteredData) : setNewData(products);
+  }, [selectedSubCats]);
 
   return (
     <Products>
@@ -99,12 +114,7 @@ const products = () => {
           className="newImage"
         />
 
-        <List
-          maxprice={maxprice}
-          sort={sort}
-          products={products}
-          subCate={selectedSubCats}
-        />
+        <List maxprice={maxprice} sort={sort} products={newData} />
       </RightPart>
     </Products>
   );

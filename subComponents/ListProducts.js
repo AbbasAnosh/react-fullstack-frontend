@@ -2,7 +2,7 @@ import React from "react";
 import { Gallery } from "../styles/Gallery";
 import Product from "../components/Product";
 
-const List = ({ products, maxprice, sort, subCate }) => {
+const List = ({ products, maxprice, sort }) => {
   return (
     <Gallery>
       {products?.map((product) => (
@@ -11,7 +11,6 @@ const List = ({ products, maxprice, sort, subCate }) => {
           product={product}
           maxprice={maxprice}
           sort={sort}
-          subCate={subCate}
         />
       ))}
     </Gallery>
