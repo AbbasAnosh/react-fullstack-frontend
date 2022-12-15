@@ -11,7 +11,6 @@ const { AnimatePresence, motion } = require("framer-motion");
 
 const Nav = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
-  const { user, error, isLoading } = useUser();
 
   return (
     <NavStyles>
@@ -19,14 +18,11 @@ const Nav = () => {
         <h2>TARGET</h2>
       </Link>
       <Category>
-        <Link href={"/"}>
+        <Link href={"/men"}>
           <p>Men</p>
         </Link>
-        <Link href={"/"}>
+        <Link href={"/women"}>
           <p>Women</p>
-        </Link>
-        <Link href={"/"}>
-          <p>Children</p>
         </Link>
       </Category>
       <NavItems>

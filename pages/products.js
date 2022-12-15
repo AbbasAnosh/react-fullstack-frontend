@@ -13,6 +13,7 @@ import List from "../subComponents/ListProducts";
 
 const products = () => {
   const [maxprice, setMaxprice] = useState(1000);
+  const [priceRange, setPriceRange] = useState(500);
   const [sort, setSort] = useState(null);
 
   const [selectedSubCats, setSelectedSubCats] = useState([]);
@@ -30,6 +31,7 @@ const products = () => {
   const onhandlechange = (e) => {
     const value = e.target.value;
     const ischecked = e.target.checked;
+
     setSelectedSubCats(
       ischecked
         ? [...selectedSubCats, value]
@@ -37,8 +39,14 @@ const products = () => {
     );
   };
 
+  const onPriceChange = (e) => {
+    setPriceRange(e.target.value);
+  };
+
   useEffect(() => {
-    const filteredData = [];
+    setNewData(products);
+    let filteredData = [];
+    const filteredDataByPrice = [];
     products.map((product) => {
       selectedSubCats.map((id) => {
         if (
@@ -49,8 +57,17 @@ const products = () => {
         }
       });
     });
-    filteredData.length > 0 ? setNewData(filteredData) : setNewData(products);
-  }, [selectedSubCats]);
+    filteredData = filteredData.length > 0 ? filteredData : products;
+    filteredData.map((product) => {
+      if (
+        product.attributes.price > 0 &&
+        product.attributes.price <= priceRange
+      ) {
+        filteredDataByPrice.push(product);
+      }
+    });
+    setNewData(filteredDataByPrice);
+  }, [selectedSubCats, priceRange]);
 
   return (
     <Products>
@@ -73,16 +90,11 @@ const products = () => {
           <h2>Filter by Price</h2>
           <div>
             <span>0</span>
-            <input
-              type="range"
-              min={0}
-              max={1000}
-              onChange={(e) => setMaxprice(e.target.value)}
-            />
+            <input type="range" min={0} max={1000} onChange={onPriceChange} />
             <span>{maxprice}</span>
           </div>
         </FilterItem>
-        <FilterItem>
+        {/* <FilterItem>
           <h2>Sort by</h2>
           <InputItem>
             <input
@@ -104,7 +116,7 @@ const products = () => {
             />
             <lable htmlFor="desc">Price (Highest first)</lable>
           </InputItem>
-        </FilterItem>
+        </FilterItem> */}
       </LeftPart>
 
       <RightPart>
