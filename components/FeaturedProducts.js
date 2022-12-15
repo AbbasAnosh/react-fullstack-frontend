@@ -5,18 +5,22 @@ import {
   Bottom,
 } from "../styles/FeaturedProductStyle";
 import Card from "../subComponents/Card";
+import { HiArrowRight } from "react-icons/hi";
+import { useRouter } from "next/router";
 
 const FeaturedProducts = ({ type, product }) => {
+  const router = useRouter();
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push("/products");
+  };
   return (
     <FeaturedProductComponent>
       <Top>
         <h1>{type} products</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          earum exercitationem dolore? Pariatur est ipsum ipsa excepturi
-          corporis tempore veritatis perferendis? Eveniet soluta quasi quia
-          corrupti nemo excepturi placeat?
-        </p>
+        <button onClick={handleClick}>
+          View More <HiArrowRight />
+        </button>
       </Top>
       <Bottom>
         {product?.map(

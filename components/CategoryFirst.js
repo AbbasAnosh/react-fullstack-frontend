@@ -17,6 +17,7 @@ const CategoryFirst = () => {
       isNew: true,
       oldPrice: 19,
       price: 12,
+      href: "/men",
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ const CategoryFirst = () => {
       isNew: false,
       oldPrice: 40,
       price: 32,
+      href: "/women",
     },
   ];
   return (
